@@ -26,7 +26,7 @@ const description =
   'Mira — your intelligent AI assistant created by RajatWorks.'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://morphic.sh'),
+  metadataBase: new URL('https://mira.sh'),
   title,
   description,
   openGraph: {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title,
     description,
     card: 'summary_large_image',
-    creator: '@miiura'
+    creator: '@mira'
   }
 }
 
