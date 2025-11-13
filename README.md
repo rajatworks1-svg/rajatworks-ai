@@ -107,22 +107,6 @@ Models are configured in `public/config/models.json`. Each model requires its co
 - [Radix UI](https://www.radix-ui.com/) - Unstyled, accessible components
 - [Lucide Icons](https://lucide.dev/) - Beautiful & consistent icons
 
-## 🚀 Quickstart
-
-### 1. Fork and Clone repo
-
-Fork the repo to your Github account, then run the following command to clone the repo:
-
-```bash
-git clone git@github.com:[YOUR_GITHUB_ACCOUNT]/Mira.git
-```
-
-### 2. Install dependencies
-
-```bash
-cd morphic
-bun install
-```
 ## 🔎 Search Engine
 
 ### Setting up the Search Engine in Your Browser
