@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation'
 
 import { User } from '@supabase/supabase-js'
-import { Link2, LogOut, Palette } from 'lucide-react'
+import { LogOut, Palette } from 'lucide-react' // Link2 removed
 
 import { createClient } from '@/lib/supabase/client'
 
@@ -21,7 +21,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 import { Button } from './ui/button'
-import { ExternalLinkItems } from './external-link-items'
+// import { ExternalLinkItems } from './external-link-items' // REMOVED
 import { ThemeMenuItems } from './theme-menu-items'
 
 interface UserMenuProps {
@@ -87,7 +87,7 @@ export default function UserMenu({ user }: UserMenuProps) {
             <ThemeMenuItems />
           </DropdownMenuSubContent>
         </DropdownMenuSub>
-        <DropdownMenuSub>
+        {/* <DropdownMenuSub>  // REMOVED LINKS SECTION
           <DropdownMenuSubTrigger>
             <Link2 className="mr-2 h-4 w-4" />
             <span>Links</span>
@@ -95,7 +95,7 @@ export default function UserMenu({ user }: UserMenuProps) {
           <DropdownMenuSubContent>
             <ExternalLinkItems />
           </DropdownMenuSubContent>
-        </DropdownMenuSub>
+        </DropdownMenuSub> */}
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleLogout}>
           <LogOut className="mr-2 h-4 w-4" />
