@@ -23,7 +23,7 @@ const fontSans = FontSans({
 
 const title = 'Mira'
 const description =
-  'Mira — your intelligent AI assistant created by RajatWorks.",
+  'Mira — your intelligent AI assistant created by RajatWorks.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://morphic.sh'),
