@@ -8,11 +8,15 @@ import { isProviderEnabled } from '@/lib/utils/registry'
 
 export const maxDuration = 30
 
+// 1. CRITICAL CHANGE: DEFAULT MODEL ko LocalAI ki taraf point karna
+// Yeh LocalAI, OpenAI ke roop mein kaam karega, isliye hum isko 'openai' providerId hi denge.
+// Lekin model ka naam aapke naye LocalAI model se match karega.
 const DEFAULT_MODEL: Model = {
-  id: 'gpt-4o-mini',
-  name: 'GPT-4o mini',
-  provider: 'OpenAI',
-  providerId: 'openai',
+  // Model ID ab LOCALAI_MODEL_NAME se aayega (.env.local se)
+  id: process.env.LOCALAI_MODEL_NAME || 'Llama-3-8B-GGUF', 
+  name: 'Mira Local LLM', // Naya naam
+  provider: 'LocalAI', // Naya provider name
+  providerId: 'openai', // LocalAI, OpenAI ke API ko imitate karta hai, isliye hum yahi rakhenge.
   enabled: true,
   toolCallType: 'native'
 }
@@ -39,16 +43,20 @@ export async function POST(req: Request) {
 
     if (modelJson) {
       try {
+        // Agar user ne koi dusra model select kiya hai, toh woh use hoga
         selectedModel = JSON.parse(modelJson) as Model
       } catch (e) {
         console.error('Failed to parse selected model:', e)
       }
     }
 
+    // IsProviderEnabled check ko hum ignore kar rahe hain kyunki LocalAI hamesha enabled rahega
+    // Lekin hum code ko clean nahi karenge, sirf model change kiya hai.
     if (
       !isProviderEnabled(selectedModel.providerId) ||
       selectedModel.enabled === false
     ) {
+      // Hum is response ko change kar sakte hain agar LocalAI fail ho toh
       return new Response(
         `Selected provider is not enabled ${selectedModel.providerId}`,
         {
@@ -60,6 +68,9 @@ export async function POST(req: Request) {
 
     const supportsToolCalling = selectedModel.toolCallType === 'native'
 
+    // Yahan par tool calling stream response banta hai.
+    // Hum assume kar rahe hain ki createToolCallingStreamResponse function
+    //  lib/openai.ts client ko use karta hai (jisko humne .env.local se redirect kiya hai).
     return supportsToolCalling
       ? createToolCallingStreamResponse({
           messages,
