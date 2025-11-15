@@ -3,10 +3,13 @@
 
 import { useEffect, useState } from 'react'
 
+// External Libraries (lucide-react)
 import { Download, PlusCircle } from 'lucide-react' 
 
+// Internal Aliases
 import { SearchResultImage } from '@/lib/types'
 
+// Internal Components (Relative Paths)
 import {
   Carousel,
   type CarouselApi,
