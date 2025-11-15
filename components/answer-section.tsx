@@ -1,11 +1,14 @@
 'use client'
 
 import { ChatRequestOptions } from 'ai'
+// LATEST CHANGE: Importing Speaker icon for the Listen button
+import { Volume2 } from 'lucide-react' 
 
 import { CollapsibleMessage } from './collapsible-message'
 import { DefaultSkeleton } from './default-skeleton'
 import { BotMessage } from './message'
 import { MessageActions } from './message-actions'
+import { Button } from './ui/button' // Importing Button component
 
 export type AnswerSectionProps = {
   content: string
@@ -38,17 +41,53 @@ export function AnswerSection({
     return Promise.resolve(undefined)
   }
 
+  // ******* START: NEW TTS (Listen) Logic *******
+  const handleListen = () => {
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      // Basic check to prevent reading empty content
+      if (!content || content.trim().length === 0) {
+          alert('Nothing to read.')
+          return
+      }
+      
+      const utterance = new SpeechSynthesisUtterance(content)
+      // Optional: Set voice, pitch, rate if needed
+      // utterance.rate = 1.0; 
+      // utterance.pitch = 1.0; 
+      
+      window.speechSynthesis.speak(utterance)
+      alert('Reading answer aloud... (Functionality added)')
+    } else {
+      alert('Text-to-Speech not supported in this browser.')
+    }
+  }
+  // ******* END: NEW TTS (Listen) Logic *******
+
   const message = content ? (
     <div className="flex flex-col gap-1">
       <BotMessage message={content} />
       {showActions && (
-        <MessageActions
-          message={content} // Keep original message content for copy
-          messageId={messageId}
-          chatId={chatId || ''}
-          enableShare={enableShare}
-          reload={handleReload}
-        />
+        <div className="flex items-center gap-2 mt-1"> 
+          {/* Listen Button (Speaker Icon) */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={handleListen}
+            className="size-8" 
+            title="Listen to answer"
+          >
+            <Volume2 className="size-4" />
+          </Button>
+
+          {/* Existing Message Actions (Copy, Reload, etc.) */}
+          <MessageActions
+            message={content} // Keep original message content for copy
+            messageId={messageId}
+            chatId={chatId || ''}
+            enableShare={enableShare}
+            reload={handleReload}
+          />
+        </div>
       )}
     </div>
   ) : (
@@ -66,4 +105,5 @@ export function AnswerSection({
       {message}
     </CollapsibleMessage>
   )
-}
+  }
+  
