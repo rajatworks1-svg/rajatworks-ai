@@ -1,4 +1,14 @@
 {
-  "models": []
+  "models": [
+    {
+      "id": "llama3:8b",
+      "name": "Veena LLM",
+      "provider": "Ollama",
+      "providerId": "ollama",
+      "enabled": true,
+      "toolCallType": "manual"
+    }
+  ]
 }
+
 
