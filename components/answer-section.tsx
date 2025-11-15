@@ -1,14 +1,13 @@
 'use client'
 
 import { ChatRequestOptions } from 'ai'
-
 import { Volume2 } from 'lucide-react' 
 
+import { BotMessage } from './message'
+import { Button } from './ui/button'
 import { CollapsibleMessage } from './collapsible-message'
 import { DefaultSkeleton } from './default-skeleton'
-import { BotMessage } from './message'
 import { MessageActions } from './message-actions'
-import { Button } from './ui/button'
 
 export type AnswerSectionProps = {
  content: string
