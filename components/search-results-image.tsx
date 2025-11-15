@@ -3,12 +3,10 @@
 
 import { useEffect, useState } from 'react'
 
-// Sorted Icon Imports
 import { Download, PlusCircle } from 'lucide-react' 
 
 import { SearchResultImage } from '@/lib/types'
 
-// Sorted Component Imports
 import {
   Carousel,
   type CarouselApi,
@@ -25,7 +23,7 @@ import {
   DialogTitle,
   DialogTrigger
 } from '@/components/ui/dialog'
-import { Button } from '@/components/ui/button' // Importing Button component
+import { Button } from '@/components/ui/button'
 
 interface SearchResultsImageSectionProps {
   images: SearchResultImage[]
