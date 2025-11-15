@@ -1,8 +1,6 @@
-# Mira
+# Veena
 
-Mira — a friendly and intelligent AI assistant created by RajatWorks.
-
-![capture](/public/screenshot-2025-05-04.png)
+Veena — a friendly and intelligent AI assistant created by RajatWorks.
 
 ## 🗂️ Overview
 
@@ -15,9 +13,7 @@ Mira — a friendly and intelligent AI assistant created by RajatWorks.
 - 👥 [Contributing](#-contributing)
 - 📄 [License](#-license)
 
-📝 Explore AI-generated documentation on [DeepWiki](https://deepwiki.com/miurla/morphic)
-
-Your feedback helps shape the future of Mira!
+Your feedback helps shape the future of Veena!
 
 ## 🛠 Features
 
@@ -111,20 +107,20 @@ Models are configured in `public/config/models.json`. Each model requires its co
 
 ### Setting up the Search Engine in Your Browser
 
-If you want to use Mira as a search engine in your browser, follow these steps:
+If you want to use Veena as a search engine in your browser, follow these steps:
 
 1. Open your browser settings.
 2. Navigate to the search engine settings section.
 3. Select "Manage search engines and site search".
 4. Under "Site search", click on "Add".
 5. Fill in the fields as follows:
-   - **Search engine**: Mira
-   - **Shortcut**: mira
-   - **URL with %s in place of query**: `https://mira.sh/search?q=%s`
+   - **Search engine**: Veena
+   - **Shortcut**: Veena
+   - **URL with %s in place of query**: `https://veena.sh/search?q=%s`
 6. Click "Add" to save the new search engine.
-7. Find "Mira" in the list of site search, click on the three dots next to it, and select "Make default".
+7. Find "Veena" in the list of site search, click on the three dots next to it, and select "Make default".
 
-This will allow you to use Mira as your default search engine in the browser.
+This will allow you to use Veena as your default search engine in the browser.
 
 ## 💙 Sponsors
 
@@ -133,7 +129,7 @@ Rajat(RajatWorks)
 
 ## 👥 Contributing
 
-We welcome contributions to Mira! Whether it's bug reports, feature requests, or pull requests, all contributions are appreciated.
+We welcome contributions to Veena! Whether it's bug reports, feature requests, or pull requests, all contributions are appreciated.
 
 Please see our [Contributing Guide](CONTRIBUTING.md) for details on:
 
