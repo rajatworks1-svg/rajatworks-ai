@@ -1,4 +1,4 @@
-Import { CoreMessage, smoothStream, streamText } from 'ai'
+import { CoreMessage, smoothStream, streamText } from 'ai'
 
 import { createQuestionTool } from '../tools/question'
 import { retrieveTool } from '../tools/retrieve'
