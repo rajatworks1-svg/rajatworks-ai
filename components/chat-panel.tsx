@@ -5,7 +5,7 @@ import Textarea from 'react-textarea-autosize'
 import { useRouter } from 'next/navigation'
 
 import { Message } from 'ai'
-// Sorted Icons: ArrowUp, Camera, ChevronDown, Mic, MessageCirclePlus, Square
+
 import { ArrowUp, Camera, ChevronDown, MessageCirclePlus, Mic, Square } from 'lucide-react'
 
 import { Model } from '@/lib/types/models'
