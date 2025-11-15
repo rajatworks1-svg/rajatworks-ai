@@ -1,4 +1,4 @@
-      'use client'
+'use client'
 
 import { ChatRequestOptions } from 'ai'
 // Sorted Icon Import
@@ -107,4 +107,4 @@ export function AnswerSection({
     </CollapsibleMessage>
   )
 }
-        
+          
