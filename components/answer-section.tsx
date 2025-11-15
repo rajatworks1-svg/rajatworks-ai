@@ -1,9 +1,10 @@
-'use client'
+      'use client'
 
 import { ChatRequestOptions } from 'ai'
-// LATEST CHANGE: Importing Speaker icon for the Listen button
+// Sorted Icon Import
 import { Volume2 } from 'lucide-react' 
 
+// Sorted Component Imports
 import { CollapsibleMessage } from './collapsible-message'
 import { DefaultSkeleton } from './default-skeleton'
 import { BotMessage } from './message'
@@ -41,7 +42,7 @@ export function AnswerSection({
     return Promise.resolve(undefined)
   }
 
-  // ******* START: NEW TTS (Listen) Logic *******
+  // ******* TTS (Listen) Logic *******
   const handleListen = () => {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       // Basic check to prevent reading empty content
@@ -61,7 +62,7 @@ export function AnswerSection({
       alert('Text-to-Speech not supported in this browser.')
     }
   }
-  // ******* END: NEW TTS (Listen) Logic *******
+  // ******* End TTS Logic *******
 
   const message = content ? (
     <div className="flex flex-col gap-1">
@@ -105,5 +106,5 @@ export function AnswerSection({
       {message}
     </CollapsibleMessage>
   )
-  }
-  
+}
+        
