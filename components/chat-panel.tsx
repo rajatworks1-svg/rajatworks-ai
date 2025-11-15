@@ -11,9 +11,9 @@ import { Model } from '@/lib/types/models'
 import { cn } from '@/lib/utils'
 
 import { useArtifact } from './artifact/artifact-context'
-import { Button } from './ui/button'
+import { Button } from './ui/button' // Only one Button import
 import { EmptyScreen } from './empty-screen'
-import { IconLogo } from './ui/icons'
+import { IconLogo } from './ui/icons' // Only one IconLogo import
 import { ModelSelector } from './model-selector'
 import { SearchModeToggle } from './search-mode-toggle'
 
