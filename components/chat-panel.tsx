@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Textarea from 'react-textarea-autosize'
+import { useRouter } from 'next/navigation'
 
 import { Message } from 'ai'
 import { ArrowUp, Camera, ChevronDown, MessageCirclePlus, Mic, Square } from 'lucide-react'
@@ -12,8 +12,8 @@ import { cn } from '@/lib/utils'
 
 import { useArtifact } from './artifact/artifact-context'
 import { Button } from './ui/button'
-import { EmptyScreen } from './empty-screen'
 import { IconLogo } from './ui/icons'
+import { EmptyScreen } from './empty-screen'
 import { ModelSelector } from './model-selector'
 import { SearchModeToggle } from './search-mode-toggle'
 
