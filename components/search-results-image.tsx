@@ -24,7 +24,6 @@ import {
   DialogTitle,
   DialogTrigger
 } from '@/components/ui/dialog'
-
 interface SearchResultsImageSectionProps {
   images: SearchResultImage[]
   query?: string
