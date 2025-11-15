@@ -1,31 +1,19 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-// This order is strictly alphabetical based on the import source string/alias:
-// 1. '@/lib/types/models'
-// 2. '@/lib/utils'
-// 3. './artifact/artifact-context'
-// 4. './empty-screen'
-// 5. './model-selector'
-// 6. './search-mode-toggle'
-// 7. './ui/button'
-// 8. './ui/icons'
-// Let's use the final sorted block:
-import Textarea from 'react-textarea-autosize'
 import { useRouter } from 'next/navigation'
+import Textarea from 'react-textarea-autosize'
 
 import { Message } from 'ai'
 import { ArrowUp, Camera, ChevronDown, MessageCirclePlus, Mic, Square } from 'lucide-react'
 
-// Internal Aliases
 import { Model } from '@/lib/types/models'
 import { cn } from '@/lib/utils'
 
-// Relative paths
 import { useArtifact } from './artifact/artifact-context'
 import { Button } from './ui/button'
-import { IconLogo } from './ui/icons'
 import { EmptyScreen } from './empty-screen'
+import { IconLogo } from './ui/icons'
 import { ModelSelector } from './model-selector'
 import { SearchModeToggle } from './search-mode-toggle'
 
@@ -64,13 +52,12 @@ export function ChatPanel({
   const router = useRouter()
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const isFirstRender = useRef(true)
-  const [isComposing, setIsComposing] = useState(false) // Composition state
-  const [enterDisabled, setEnterDisabled] = useState(false) // Disable Enter after composition ends
+  const [isComposing, setIsComposing] = useState(false)
+  const [enterDisabled, setEnterDisabled] = useState(false)
   const { close: closeArtifact } = useArtifact()
-  
-  // NEW: State and Ref for File Input (Image)
+
   const fileInputRef = useRef<HTMLInputElement>(null)
-  
+
   const handleCompositionStart = () => setIsComposing(true)
 
   const handleCompositionEnd = () => {
@@ -86,23 +73,20 @@ export function ChatPanel({
     closeArtifact()
     router.push('/')
   }
-  
-  // NEW: Function to trigger file input click for image upload
+
   const handleImageUploadClick = () => {
     fileInputRef.current?.click()
   }
 
-  // NEW: Function to handle file change (when user selects a file)
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Phase 3: Image Vision/Generation logic will be implemented here
     if (e.target.files && e.target.files.length > 0) {
       alert(`Selected file: ${e.target.files[0].name}. Vision functionality coming in Phase 3!`)
       // Clear file input so same file can be selected again
-      e.target.value = '' 
+      e.target.value = ''
     }
   }
 
-  // NEW: Function to handle Mic click (Voice Input)
   const handleMicClick = () => {
     // Phase 2: Speech-to-Text logic will be implemented here
     alert('Voice Input (Mic) clicked. Functionality coming in Phase 2!')
@@ -255,7 +239,7 @@ export function ChatPanel({
               >
                 <Mic className="size-4" />
               </Button>
-              
+
               <ModelSelector models={models || []} />
               <SearchModeToggle />
             </div>
@@ -302,4 +286,4 @@ export function ChatPanel({
       </form>
     </div>
   )
-}
+      }
