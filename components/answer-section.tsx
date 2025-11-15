@@ -1,21 +1,11 @@
 'use client'
 
 import { ChatRequestOptions } from 'ai'
-import { Volume2 } from 'lucide-react' 
-
-// Absolute alphabetical order based on path:
-import { CollapsibleMessage } from './collapsible-message'
-import { DefaultSkeleton } from './default-skeleton'
-import { BotMessage } from './message'
-import { MessageActions } from './message-actions'
-import { Button } from './ui/button' // './ui/button' comes before './collapsible-message' alphabetically. LET'S CHECK.
-
 // Revised absolute order based on the path/alias:
 // @/ (Alias)
 // ./ (Relative)
 // ai (Node/External)
 // lucide-react (Node/External)
-
 // Let's go purely by import name/path string (ai, lucide-react, ./collapsible-message, ./default-skeleton, ./message, ./message-actions, ./ui/button)
 // Sorting them:
 // 1. ai
@@ -25,14 +15,21 @@ import { Button } from './ui/button' // './ui/button' comes before './collapsibl
 // 5. ./message
 // 6. ./message-actions
 // 7. ./ui/button
-
 import { ChatRequestOptions } from 'ai'
+import { Volume2 } from 'lucide-react' 
 import { Volume2 } from 'lucide-react'
+
+import { Button } from './ui/button' // './ui/button' comes before './collapsible-message' alphabetically. LET'S CHECK.
+import { Button } from './ui/button'
+// Absolute alphabetical order based on path:
+import { CollapsibleMessage } from './collapsible-message'
 import { CollapsibleMessage } from './collapsible-message'
 import { DefaultSkeleton } from './default-skeleton'
+import { DefaultSkeleton } from './default-skeleton'
+import { BotMessage } from './message'
 import { BotMessage } from './message'
 import { MessageActions } from './message-actions'
-import { Button } from './ui/button'
+import { MessageActions } from './message-actions'
 
 export type AnswerSectionProps = {
  content: string

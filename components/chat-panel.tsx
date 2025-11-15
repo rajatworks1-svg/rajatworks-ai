@@ -1,24 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { useRouter } from 'next/navigation'
-import Textarea from 'react-textarea-autosize'
-
-import { Message } from 'ai'
-import { ArrowUp, Camera, ChevronDown, MessageCirclePlus, Mic, Square } from 'lucide-react'
-
-// Internal Aliases
-import { Model } from '@/lib/types/models'
-import { cn } from '@/lib/utils'
-
-// Relative paths
-import { useArtifact } from './artifact/artifact-context'
-import { Button } from './ui/button' 
-import { EmptyScreen } from './empty-screen'
-import { IconLogo } from './ui/icons' 
-import { ModelSelector } from './model-selector'
-import { SearchModeToggle } from './search-mode-toggle'
-
 // This order is strictly alphabetical based on the import source string/alias:
 // 1. '@/lib/types/models'
 // 2. '@/lib/utils'
@@ -28,25 +10,38 @@ import { SearchModeToggle } from './search-mode-toggle'
 // 6. './search-mode-toggle'
 // 7. './ui/button'
 // 8. './ui/icons'
-
 // Let's use the final sorted block:
 import { useEffect, useRef, useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Textarea from 'react-textarea-autosize'
+import Textarea from 'react-textarea-autosize'
+import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 import { Message } from 'ai'
+import { Message } from 'ai'
+import { ArrowUp, Camera, ChevronDown, MessageCirclePlus, Mic, Square } from 'lucide-react'
 import { ArrowUp, Camera, ChevronDown, MessageCirclePlus, Mic, Square } from 'lucide-react'
 
+// Internal Aliases
+import { Model } from '@/lib/types/models'
 import { Model } from '@/lib/types/models'
 import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
+// Relative paths
 import { useArtifact } from './artifact/artifact-context'
+import { useArtifact } from './artifact/artifact-context'
+import { Button } from './ui/button' 
+import { Button } from './ui/button'
+import { IconLogo } from './ui/icons' 
+import { IconLogo } from './ui/icons'
+import { EmptyScreen } from './empty-screen'
 import { EmptyScreen } from './empty-screen'
 import { ModelSelector } from './model-selector'
-import { SearchModeToggle } from './search-mode-toggle'
-import { Button } from './ui/button'
-import { IconLogo } from './ui/icons'
 import { ModelSelector } from './model-selector'
+import { ModelSelector } from './model-selector'
+import { SearchModeToggle } from './search-mode-toggle'
+import { SearchModeToggle } from './search-mode-toggle'
 import { SearchModeToggle } from './search-mode-toggle'
 
 interface ChatPanelProps {
