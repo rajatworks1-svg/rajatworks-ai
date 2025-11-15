@@ -8,7 +8,6 @@ import { Button } from './ui/button'
 import { CollapsibleMessage } from './collapsible-message'
 import { DefaultSkeleton } from './default-skeleton'
 import { MessageActions } from './message-actions'
-
 export type AnswerSectionProps = {
  content: string
   isOpen: boolean
