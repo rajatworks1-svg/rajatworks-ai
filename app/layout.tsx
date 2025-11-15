@@ -21,12 +21,12 @@ const fontSans = FontSans({
   variable: '--font-sans'
 })
 
-const title = 'Mira'
+const title = 'Veena'
 const description =
-  'Mira — your intelligent AI assistant created by RajatWorks.'
+  'Veena — your intelligent AI assistant created by RajatWorks.'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mira.sh'),
+  metadataBase: new URL('https://veena.sh'),
   title,
   description,
   openGraph: {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title,
     description,
     card: 'summary_large_image',
-    creator: '@mira'
+    creator: '@veena'
   }
 }
 
