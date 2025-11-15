@@ -1,12 +1,21 @@
-
-
 import { Model } from '@/lib/types/models'
 import { getBaseUrl } from '@/lib/utils/url'
 
-import defaultModels from './default-models.json' // Yeh ab khaali hoga
+import defaultModels from './default-models.json'
+
+// ***** YAHAN SE FIX START HOTA HAI *****
 
 export function validateModel(model: any): model is Model {
-// ... (rest of validateModel function) ...
+  return (
+    typeof model.id === 'string' &&
+    typeof model.name === 'string' &&
+    typeof model.provider === 'string' &&
+    typeof model.providerId === 'string' &&
+    typeof model.enabled === 'boolean' &&
+    (model.toolCallType === 'native' || model.toolCallType === 'manual') &&
+    (model.toolCallModel === undefined ||
+      typeof model.toolCallModel === 'string')
+  )
 }
 
 export async function getModels(): Promise<Model[]> {
@@ -108,17 +117,44 @@ export async function getModels(): Promise<Model[]> {
  * Fetch Ollama models from the API endpoint
  */
 async function fetchOllamaModels(baseUrl: URL): Promise<Model[]> {
-// ... (rest of fetchOllamaModels function remains the same) ...
   try {
     const ollamaUrl = process.env.OLLAMA_BASE_URL
     if (!ollamaUrl) {
       console.log('OLLAMA_BASE_URL not configured, skipping Ollama models')
       return []
     }
-// ... (rest of the function) ...
+
+    const ollamaApiUrl = new URL('/api/ollama/models', baseUrl)
+    console.log(
+      'Attempting to fetch Ollama models from:',
+      ollamaApiUrl.toString()
+    )
+
+    const response = await fetch(ollamaApiUrl, {
+      cache: 'no-store',
+      headers: {
+        Accept: 'application/json'
+      }
+    })
+
+    if (!response.ok) {
+      console.warn(
+        `HTTP error when fetching Ollama models: ${response.status} ${response.statusText}`
+      )
+      return []
+    }
+
+    const data = await response.json()
+    if (Array.isArray(data.models)) {
+      console.log(`Successfully loaded ${data.models.length} Ollama models`)
+      return data.models
+    }
+
+    return []
   } catch (error) {
     console.warn('Failed to fetch Ollama models:', error)
     return []
   }
- }
+    }
+
                     
