@@ -17,18 +17,12 @@ import { ChatRequestOptions } from 'ai'
 // 7. ./ui/button
 import { ChatRequestOptions } from 'ai'
 import { Volume2 } from 'lucide-react' 
-import { Volume2 } from 'lucide-react'
 
 import { Button } from './ui/button' // './ui/button' comes before './collapsible-message' alphabetically. LET'S CHECK.
-import { Button } from './ui/button'
 // Absolute alphabetical order based on path:
 import { CollapsibleMessage } from './collapsible-message'
-import { CollapsibleMessage } from './collapsible-message'
-import { DefaultSkeleton } from './default-skeleton'
 import { DefaultSkeleton } from './default-skeleton'
 import { BotMessage } from './message'
-import { BotMessage } from './message'
-import { MessageActions } from './message-actions'
 import { MessageActions } from './message-actions'
 
 export type AnswerSectionProps = {
