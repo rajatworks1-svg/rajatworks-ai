@@ -14,7 +14,7 @@ export const maxDuration = 30
 const DEFAULT_MODEL: Model = {
   // Model ID ab LOCALAI_MODEL_NAME se aayega (.env.local se)
   id: process.env.LOCALAI_MODEL_NAME || 'Llama-3-8B-GGUF', 
-  name: 'Mira Local LLM', // Naya naam
+  name: 'Veena Local LLM', // Naya naam
   provider: 'LocalAI', // Naya provider name
   providerId: 'openai', // LocalAI, OpenAI ke API ko imitate karta hai, isliye hum yahi rakhenge.
   enabled: true,
@@ -49,9 +49,7 @@ export async function POST(req: Request) {
         console.error('Failed to parse selected model:', e)
       }
     }
-
-    // IsProviderEnabled check ko hum ignore kar rahe hain kyunki LocalAI hamesha enabled rahega
-    // Lekin hum code ko clean nahi karenge, sirf model change kiya hai.
+    
     if (
       !isProviderEnabled(selectedModel.providerId) ||
       selectedModel.enabled === false
@@ -67,10 +65,7 @@ export async function POST(req: Request) {
     }
 
     const supportsToolCalling = selectedModel.toolCallType === 'native'
-
-    // Yahan par tool calling stream response banta hai.
-    // Hum assume kar rahe hain ki createToolCallingStreamResponse function
-    //  lib/openai.ts client ko use karta hai (jisko humne .env.local se redirect kiya hai).
+    
     return supportsToolCalling
       ? createToolCallingStreamResponse({
           messages,
