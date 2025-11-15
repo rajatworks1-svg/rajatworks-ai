@@ -3,7 +3,8 @@
 
 import { useEffect, useState } from 'react'
 
-import { PlusCircle } from 'lucide-react'
+// LATEST CHANGE: Importing Download icon for the button
+import { PlusCircle, Download } from 'lucide-react' 
 
 import { SearchResultImage } from '@/lib/types'
 
@@ -23,6 +24,7 @@ import {
   DialogTitle,
   DialogTrigger
 } from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button' // Importing Button component
 
 interface SearchResultsImageSectionProps {
   images: SearchResultImage[]
@@ -96,6 +98,27 @@ export const SearchResultsImageSection: React.FC<
     return <div className="text-muted-foreground">No images found</div>
   }
 
+  // ******* START: NEW Download Logic *******
+  const handleDownload = () => {
+    if (!api || convertedImages.length === 0) return
+
+    // Get the image currently visible in the carousel
+    const currentImage = convertedImages[api.selectedScrollSnap()]
+    if (!currentImage || !currentImage.url) {
+      alert('Cannot download: Image URL not found.')
+      return
+    }
+
+    // This creates a temporary link element to trigger the download
+    const link = document.createElement('a')
+    link.href = currentImage.url
+    link.download = `veena-ai-image-${api.selectedScrollSnap() + 1}.png` // Default filename
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+  // ******* END: NEW Download Logic *******
+
   const renderImageGrid = (
     imageSubset: { url: string; description: string }[],
     gridClasses: string,
@@ -155,11 +178,24 @@ export const SearchResultsImageSection: React.FC<
               </div>
             </DialogTrigger>
             <DialogContent className="sm:max-w-3xl max-h-[80vh] overflow-auto">
-              <DialogHeader>
-                <DialogTitle>Search Images</DialogTitle>
-                <DialogDescription className="text-sm">
-                  {query}
-                </DialogDescription>
+              <DialogHeader className="flex flex-row items-center justify-between">
+                <div>
+                  <DialogTitle>Search Images</DialogTitle>
+                  <DialogDescription className="text-sm">
+                    {query}
+                  </DialogDescription>
+                </div>
+                {/* LATEST CHANGE: Download Button added to the header */}
+                <Button 
+                  variant="outline" 
+                  size="icon" 
+                  onClick={handleDownload} 
+                  title="Download Image"
+                  className="shrink-0"
+                >
+                  <Download className="size-4" />
+                </Button>
+                
               </DialogHeader>
               <div className="py-4">
                 <Carousel
@@ -243,4 +279,5 @@ export const SearchResultsImageSection: React.FC<
     0,
     false
   )
-}
+      }
+        
