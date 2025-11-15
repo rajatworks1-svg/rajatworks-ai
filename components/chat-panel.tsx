@@ -11,7 +11,6 @@ import { useEffect, useRef, useState } from 'react'
 // 7. './ui/button'
 // 8. './ui/icons'
 // Let's use the final sorted block:
-import { useEffect, useRef, useState } from 'react'
 import Textarea from 'react-textarea-autosize'
 import { useRouter } from 'next/navigation'
 
