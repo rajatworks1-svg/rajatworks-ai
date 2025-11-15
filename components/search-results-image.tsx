@@ -3,11 +3,12 @@
 
 import { useEffect, useState } from 'react'
 
-// LATEST CHANGE: Importing Download icon for the button
-import { PlusCircle, Download } from 'lucide-react' 
+// Sorted Icons: Download, PlusCircle
+import { Download, PlusCircle } from 'lucide-react' 
 
 import { SearchResultImage } from '@/lib/types'
 
+// Sorted Component Imports
 import {
   Carousel,
   type CarouselApi,
@@ -98,7 +99,7 @@ export const SearchResultsImageSection: React.FC<
     return <div className="text-muted-foreground">No images found</div>
   }
 
-  // ******* START: NEW Download Logic *******
+  // ******* NEW Download Logic *******
   const handleDownload = () => {
     if (!api || convertedImages.length === 0) return
 
@@ -185,7 +186,7 @@ export const SearchResultsImageSection: React.FC<
                     {query}
                   </DialogDescription>
                 </div>
-                {/* LATEST CHANGE: Download Button added to the header */}
+                {/* Download Button added to the header */}
                 <Button 
                   variant="outline" 
                   size="icon" 
@@ -279,5 +280,4 @@ export const SearchResultsImageSection: React.FC<
     0,
     false
   )
-      }
-        
+}
