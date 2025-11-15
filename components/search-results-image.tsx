@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from 'react'
 
-// Sorted Icons: Download, PlusCircle
+// Sorted Icon Imports
 import { Download, PlusCircle } from 'lucide-react' 
 
 import { SearchResultImage } from '@/lib/types'
@@ -280,4 +280,5 @@ export const SearchResultsImageSection: React.FC<
     0,
     false
   )
-}
+    }
+                 
