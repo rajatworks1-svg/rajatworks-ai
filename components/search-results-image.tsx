@@ -3,13 +3,11 @@
 
 import { useEffect, useState } from 'react'
 
-// External Libraries (lucide-react)
 import { Download, PlusCircle } from 'lucide-react' 
 
-// Internal Aliases
 import { SearchResultImage } from '@/lib/types'
 
-// Internal Components (Relative Paths)
+import { Button } from '@/components/ui/button'
 import {
   Carousel,
   type CarouselApi,
@@ -26,7 +24,6 @@ import {
   DialogTitle,
   DialogTrigger
 } from '@/components/ui/dialog'
-import { Button } from '@/components/ui/button'
 
 interface SearchResultsImageSectionProps {
   images: SearchResultImage[]
