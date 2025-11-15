@@ -1,18 +1,17 @@
 'use client'
 
 import { ChatRequestOptions } from 'ai'
-// Sorted Icon Import
+
 import { Volume2 } from 'lucide-react' 
 
-// Sorted Component Imports
 import { CollapsibleMessage } from './collapsible-message'
 import { DefaultSkeleton } from './default-skeleton'
 import { BotMessage } from './message'
 import { MessageActions } from './message-actions'
-import { Button } from './ui/button' // Importing Button component
+import { Button } from './ui/button'
 
 export type AnswerSectionProps = {
-  content: string
+ content: string
   isOpen: boolean
   onOpenChange: (open: boolean) => void
   chatId?: string
