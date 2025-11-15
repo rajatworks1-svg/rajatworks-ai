@@ -8,11 +8,7 @@ import { isProviderEnabled } from '@/lib/utils/registry'
 
 export const maxDuration = 30
 
-// 1. CRITICAL CHANGE: DEFAULT MODEL ko LocalAI ki taraf point karna
-// Yeh LocalAI, OpenAI ke roop mein kaam karega, isliye hum isko 'openai' providerId hi denge.
-// Lekin model ka naam aapke naye LocalAI model se match karega.
 const DEFAULT_MODEL: Model = {
-  // Model ID ab LOCALAI_MODEL_NAME se aayega (.env.local se)
   id: process.env.LOCALAI_MODEL_NAME || 'Llama-3-8B-GGUF', 
   name: 'Veena Local LLM', // Naya naam
   provider: 'LocalAI', // Naya provider name
