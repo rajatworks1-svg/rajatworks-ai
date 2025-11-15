@@ -5,7 +5,8 @@ import Textarea from 'react-textarea-autosize'
 import { useRouter } from 'next/navigation'
 
 import { Message } from 'ai'
-import { ArrowUp, ChevronDown, MessageCirclePlus, Square } from 'lucide-react'
+// ******* LATEST CHANGE: Importing necessary icons *******
+import { ArrowUp, ChevronDown, MessageCirclePlus, Square, Mic, Camera } from 'lucide-react'
 
 import { Model } from '@/lib/types/models'
 import { cn } from '@/lib/utils'
@@ -56,6 +57,9 @@ export function ChatPanel({
   const [enterDisabled, setEnterDisabled] = useState(false) // Disable Enter after composition ends
   const { close: closeArtifact } = useArtifact()
 
+  // New state for file input (to handle Image Upload)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
   const handleCompositionStart = () => setIsComposing(true)
 
   const handleCompositionEnd = () => {
@@ -70,6 +74,24 @@ export function ChatPanel({
     setMessages([])
     closeArtifact()
     router.push('/')
+  }
+
+  const handleImageUploadClick = () => {
+    // Triggers the hidden file input click
+    fileInputRef.current?.click()
+  }
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Logic for handling file (Image Vision/Generation) goes here in Phase 2/3
+    // For now, it just shows an alert
+    if (e.target.files && e.target.files.length > 0) {
+      alert(`Selected file: ${e.target.files[0].name}. Functionality coming soon!`)
+    }
+  }
+
+  const handleMicClick = () => {
+    // Logic for Voice Input (Speech-to-Text) goes here in Phase 2
+    alert('Voice Input (Mic) clicked. Functionality coming soon!')
   }
 
   const isToolInvocationInProgress = () => {
@@ -181,9 +203,48 @@ export function ChatPanel({
             onBlur={() => setShowEmptyScreen(false)}
           />
 
+          {/* Hidden File Input for Image Upload */}
+          <input
+            type="file"
+            ref={fileInputRef}
+            onChange={handleFileChange}
+            accept="image/*"
+            style={{ display: 'none' }}
+            disabled={isLoading || isToolInvocationInProgress()}
+          />
+
           {/* Bottom menu area */}
           <div className="flex items-center justify-between p-3">
             <div className="flex items-center gap-2">
+              {/* START: New Buttons for Veena AI */}
+              
+              {/* 1. Image Upload/Vision Button */}
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={handleImageUploadClick}
+                className="shrink-0 rounded-full"
+                type="button"
+                title="Upload image for Vision/Generation"
+                disabled={isLoading || isToolInvocationInProgress()}
+              >
+                <Camera className="size-4" />
+              </Button>
+
+              {/* 2. Voice Input (Mic) Button */}
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={handleMicClick}
+                className="shrink-0 rounded-full"
+                type="button"
+                title="Voice Input"
+                disabled={isLoading || isToolInvocationInProgress()}
+              >
+                <Mic className="size-4" />
+              </Button>
+              {/* END: New Buttons for Veena AI */}
+
               <ModelSelector models={models || []} />
               <SearchModeToggle />
             </div>
@@ -230,4 +291,5 @@ export function ChatPanel({
       </form>
     </div>
   )
-}
+      }
+      
