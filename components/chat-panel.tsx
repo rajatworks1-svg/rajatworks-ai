@@ -13,35 +13,21 @@ import { useEffect, useRef, useState } from 'react'
 // Let's use the final sorted block:
 import { useEffect, useRef, useState } from 'react'
 import Textarea from 'react-textarea-autosize'
-import Textarea from 'react-textarea-autosize'
-import { useRouter } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 
 import { Message } from 'ai'
-import { Message } from 'ai'
-import { ArrowUp, Camera, ChevronDown, MessageCirclePlus, Mic, Square } from 'lucide-react'
 import { ArrowUp, Camera, ChevronDown, MessageCirclePlus, Mic, Square } from 'lucide-react'
 
 // Internal Aliases
 import { Model } from '@/lib/types/models'
-import { Model } from '@/lib/types/models'
-import { cn } from '@/lib/utils'
 import { cn } from '@/lib/utils'
 
 // Relative paths
 import { useArtifact } from './artifact/artifact-context'
-import { useArtifact } from './artifact/artifact-context'
-import { Button } from './ui/button' 
 import { Button } from './ui/button'
-import { IconLogo } from './ui/icons' 
 import { IconLogo } from './ui/icons'
 import { EmptyScreen } from './empty-screen'
-import { EmptyScreen } from './empty-screen'
 import { ModelSelector } from './model-selector'
-import { ModelSelector } from './model-selector'
-import { ModelSelector } from './model-selector'
-import { SearchModeToggle } from './search-mode-toggle'
-import { SearchModeToggle } from './search-mode-toggle'
 import { SearchModeToggle } from './search-mode-toggle'
 
 interface ChatPanelProps {
