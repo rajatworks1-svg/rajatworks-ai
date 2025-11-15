@@ -4,18 +4,21 @@ import { useEffect, useRef, useState } from 'react'
 import Textarea from 'react-textarea-autosize'
 import { useRouter } from 'next/navigation'
 
+// External Libraries
 import { Message } from 'ai'
 import { ArrowUp, Camera, ChevronDown, MessageCirclePlus, Mic, Square } from 'lucide-react'
 
+// Internal Aliases
 import { Model } from '@/lib/types/models'
 import { cn } from '@/lib/utils'
 
+// Internal Components (Relative Paths)
 import { useArtifact } from './artifact/artifact-context'
+import { EmptyScreen } from './empty-screen'
+import { ModelSelector } from './model-selector' // Import rehne do, use nahi karenge
+import { SearchModeToggle } from './search-mode-toggle'
 import { Button } from './ui/button'
 import { IconLogo } from './ui/icons'
-import { EmptyScreen } from './empty-screen'
-import { ModelSelector } from './model-selector'
-import { SearchModeToggle } from './search-mode-toggle'
 
 interface ChatPanelProps {
   input: string
@@ -240,7 +243,12 @@ export function ChatPanel({
                 <Mic className="size-4" />
               </Button>
 
-              <ModelSelector models={models || []} />
+              {/* 3. HARDCODED: Model Selector ki jagah seedha Veena LLM dikhao */}
+              <div className="text-sm font-semibold text-white/90 bg-primary/20 rounded-full px-4 py-2 border border-primary/50">
+                  Veena LLM
+              </div>
+              
+              {/* 4. Search Mode Toggle */}
               <SearchModeToggle />
             </div>
             <div className="flex items-center gap-2">
@@ -286,4 +294,5 @@ export function ChatPanel({
       </form>
     </div>
   )
-      }
+    }
+    
