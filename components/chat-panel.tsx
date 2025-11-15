@@ -5,7 +5,7 @@ import Textarea from 'react-textarea-autosize'
 import { useRouter } from 'next/navigation'
 
 import { Message } from 'ai'
-// ******* LATEST CHANGE: Importing necessary icons *******
+// Imported Mic and Camera icons
 import { ArrowUp, ChevronDown, MessageCirclePlus, Square, Mic, Camera } from 'lucide-react'
 
 import { Model } from '@/lib/types/models'
@@ -56,10 +56,10 @@ export function ChatPanel({
   const [isComposing, setIsComposing] = useState(false) // Composition state
   const [enterDisabled, setEnterDisabled] = useState(false) // Disable Enter after composition ends
   const { close: closeArtifact } = useArtifact()
-
-  // New state for file input (to handle Image Upload)
+  
+  // NEW: State and Ref for File Input (Image)
   const fileInputRef = useRef<HTMLInputElement>(null)
-
+  
   const handleCompositionStart = () => setIsComposing(true)
 
   const handleCompositionEnd = () => {
@@ -75,23 +75,26 @@ export function ChatPanel({
     closeArtifact()
     router.push('/')
   }
-
+  
+  // NEW: Function to trigger file input click for image upload
   const handleImageUploadClick = () => {
-    // Triggers the hidden file input click
     fileInputRef.current?.click()
   }
 
+  // NEW: Function to handle file change (when user selects a file)
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // Logic for handling file (Image Vision/Generation) goes here in Phase 2/3
-    // For now, it just shows an alert
+    // Phase 3: Image Vision/Generation logic will be implemented here
     if (e.target.files && e.target.files.length > 0) {
-      alert(`Selected file: ${e.target.files[0].name}. Functionality coming soon!`)
+      alert(`Selected file: ${e.target.files[0].name}. Vision functionality coming in Phase 3!`)
+      // Clear file input so same file can be selected again
+      e.target.value = '' 
     }
   }
 
+  // NEW: Function to handle Mic click (Voice Input)
   const handleMicClick = () => {
-    // Logic for Voice Input (Speech-to-Text) goes here in Phase 2
-    alert('Voice Input (Mic) clicked. Functionality coming soon!')
+    // Phase 2: Speech-to-Text logic will be implemented here
+    alert('Voice Input (Mic) clicked. Functionality coming in Phase 2!')
   }
 
   const isToolInvocationInProgress = () => {
@@ -203,7 +206,7 @@ export function ChatPanel({
             onBlur={() => setShowEmptyScreen(false)}
           />
 
-          {/* Hidden File Input for Image Upload */}
+          {/* NEW: Hidden File Input for Image Upload */}
           <input
             type="file"
             ref={fileInputRef}
@@ -216,16 +219,14 @@ export function ChatPanel({
           {/* Bottom menu area */}
           <div className="flex items-center justify-between p-3">
             <div className="flex items-center gap-2">
-              {/* START: New Buttons for Veena AI */}
-              
-              {/* 1. Image Upload/Vision Button */}
+              {/* 1. Image Upload/Vision Button (Gallery/Drive se photo daalne ke liye) */}
               <Button
                 variant="outline"
                 size="icon"
                 onClick={handleImageUploadClick}
                 className="shrink-0 rounded-full"
                 type="button"
-                title="Upload image for Vision/Generation"
+                title="Upload image for Vision"
                 disabled={isLoading || isToolInvocationInProgress()}
               >
                 <Camera className="size-4" />
@@ -243,8 +244,7 @@ export function ChatPanel({
               >
                 <Mic className="size-4" />
               </Button>
-              {/* END: New Buttons for Veena AI */}
-
+              
               <ModelSelector models={models || []} />
               <SearchModeToggle />
             </div>
